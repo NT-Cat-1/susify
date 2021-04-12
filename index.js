@@ -5,7 +5,7 @@ var http = require("http");
 var app = require("express")(http);
 var xhr = new XMLHttpRequest();
 app.get("/", function(req,res){
-	req.send("/susify?adr=[url]&policy=0")
+	res.send("/susify?prot=[https|http]&adr=[url]&policy=0")
 });
 app.get("/susify",function(req, res){
 	var ip;
@@ -26,11 +26,11 @@ app.get("/susify",function(req, res){
 		ip = "8.8.8.8";
 		useragent = "SusifierBot 1.0 Node";
 	}
-	xhr.open("GET",req.query.adr);
+	xhr.open("GET",req.query.prot+"://"+req.query.adr);
 	xhr.responseType = "text";
 	xhr.onload = function(){
-		var dom = parser.parseFromString(xhr.responseText);
-		var list = document.getElementsByTagName("img");
+        var document = parser.parseFromString(xhr.responseText);
+        var list = document.getElementsByTagName("img");
         var flist = document.getElementsByTagName("iframe");
         var llist = document.getElementsByTagName("a");
         var slist = document.getElementsByTagName("source");
