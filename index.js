@@ -73,7 +73,7 @@ app.get("/susify",function(req, res){
         elist[i].innerText="When the imposter is sus.";
         }
         }catch{}
-		res.send(dom.innerHTML);
+		res.send(document.innerHTML);
 	};
 	xhr.send();
 });
