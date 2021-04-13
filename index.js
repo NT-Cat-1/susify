@@ -6,7 +6,8 @@ var http = require("http");
 var app = require("express")(http);
 //var xhr = new XMLHttpRequest();
 app.get("/", function(req,res){
-	res.send("/susify?prot=[https|http]&adr=[url]&policy=0")
+	//res.send("/susify?prot=[https|http]&adr=[url]&policy=0")
+	res.sendFile(__dirname+"/index.html");
 });
 app.get("/susify",function(req, res){
 	var ip;
