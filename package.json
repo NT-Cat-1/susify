@@ -5,8 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.17.1",
-    "xmlhttprequest": "^1.8.0",
-    "dom-parser": "^0.1.6"
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {},
   "scripts": {
