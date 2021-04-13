@@ -33,6 +33,7 @@ app.get("/susify",function(req, res){
 	}).catch(function(){res.status(500).send("Load failure.");});
 });
 app.use(function(req, res, next){
+console.log(req);
 next();
 });
 app.listen(process.env.PORT || 5000,function(){});
