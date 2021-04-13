@@ -33,7 +33,10 @@ app.get("/susify",function(req, res){
 	}).catch(function(){res.status(500).send("Load failure.");});
 });
 app.use(function(req, res, next){
-res.redirect("/susify?prot=http&adr="+req.get("referrer").split("/susify?")[1].replace("prot=https","").replace("prot=http","").replace("&policy=0","")+"&policy=0");
+try{
+res.redirect(req.get("referrer").split("/susify?")[1].replace("prot=https","").replace("prot=http","").replace("&policy=0",""));
+}catch{
 next();
+}
 });
 app.listen(process.env.PORT || 5000,function(){});
