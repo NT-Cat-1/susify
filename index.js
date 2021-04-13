@@ -75,6 +75,6 @@ app.get("/susify",function(req, res){
         }catch{}
 		res.send(document.rawHTML);
 	};
-	xhr.send();
+	try{xhr.send();}catch{res.status(500).send("Load failure.");}
 });
 app.listen(process.env.PORT || 5000,function(){});
