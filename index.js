@@ -1,6 +1,5 @@
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest; //constant for xhr
-const DomParser = require('dom-parser'); //constant for domparse
-var parser = new DomParser();
+const parser = require('node-html-parser'); //constant for domparse
 var http = require("http");
 var app = require("express")(http);
 var xhr = new XMLHttpRequest();
@@ -29,7 +28,7 @@ app.get("/susify",function(req, res){
 	xhr.open("GET",req.query.prot+"://"+req.query.adr);
 	xhr.responseType = "text";
 	xhr.onload = function(){
-        var document = parser.parseFromString(xhr.responseText);
+        var document = parser.parse(xhr.responseText);
         var list = document.getElementsByTagName("img");
         var flist = document.getElementsByTagName("iframe");
         var llist = document.getElementsByTagName("a");
@@ -73,7 +72,7 @@ app.get("/susify",function(req, res){
         elist[i].innerText="When the imposter is sus.";
         }
         }catch{}
-		res.send(document.getElementsByTagName("body")[0].innerHTML);
+		res.send(document.body.innerHTML);
 	};
 	xhr.send();
 });
