@@ -34,7 +34,7 @@ app.get("/susify",function(req, res){
 });
 app.use(function(req, res, next){
 try{
-res.redirect(req.get("referrer").split("/susify?")[1].replace("prot=https","").replace("prot=http","").replace("&policy=0","").replace("&adr=",""));
+res.redirect("//"+req.get("referrer").split("/susify?")[1].replace("prot=https","").replace("prot=http","").replace("&policy=0","").replace("&adr=","")+req.path);
 }catch{
 next();
 }
