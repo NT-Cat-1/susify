@@ -12,6 +12,7 @@ app.get("/", function(req,res){
 app.get("/susify",function(req, res){
 	var ip;
 	var useragent;
+	//Unused
 	if (req.query.policy == 0){
 		ip = req.get("X-Forwarded-For");
 		useragent = req.get("user-agent");
