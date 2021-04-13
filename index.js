@@ -4,7 +4,7 @@ var fetch = require("node-fetch");
 //var parser = new DomParser();
 var http = require("http");
 var app = require("express")(http);
-var xhr = new XMLHttpRequest();
+//var xhr = new XMLHttpRequest();
 app.get("/", function(req,res){
 	res.send("/susify?prot=[https|http]&adr=[url]&policy=0")
 });
