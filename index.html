@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebSite SUSifier</title>
+</head>
+<body>
+<input type="text" id="site" placeholder="Website URL without protocol">
+<input type="text" id="prot" placeholder="Protocol, example: http">
+<button onclick="go()">Go!</button>
+<script>
+function go(){
+var protocol = document.getElementById("prot").value;
+var site = document.getElementById("site").value;
+location.href="/susify?prot="+protocol+"&site="+site+"&policy=0";
+}
+</script>
+</body>
+</html>
