@@ -1,4 +1,5 @@
-const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest; //constant for xhr
+//const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest; //constant for xhr
+var fetch = require("node-fetch");
 //const DomParser = require('dom-parser'); //constant for domparse
 //var parser = new DomParser();
 var http = require("http");
@@ -26,11 +27,8 @@ app.get("/susify",function(req, res){
 		ip = "8.8.8.8";
 		useragent = "SusifierBot 1.0 Node";
 	}
-	xhr.open("GET",req.query.prot+"://"+req.query.adr);
-	xhr.responseType = "text";
-	xhr.onload = function(){
-           res.send(xhr.responseText+'<script>var list=document.getElementsByTagName("img");var flist=document.getElementsByTagName("iframe");var llist=document.getElementsByTagName("a");var slist=document.getElementsByTagName("source");var elist=document.getElementsByTagName("yt-formatted-string");try{document.getElementById("country-code").innerText="SUS";}catch{};try{document.getElementById("notification-count").innerText="SUS";}catch{};try{document.getElementById("ytd-thumbnail-overlay-time-status-renderer").innerText="S:US";}catch{};try{for(i in list){list[i].src="https://dl.dropbox.com/s/3y3qukshsjxzx5e/sus.jpg?dl=1";list[i].srcset="https://dl.dropbox.com/s/3y3qukshsjxzx5e/sus.jpg?dl=1";};}catch{};try{for(i in flist){flist[i].src="https://dl.dropbox.com/s/3y3qukshsjxzx5e/sus.jpg?dl=1";};}catch{};try{for(i in llist){llist[i].href="https://dl.dropbox.com/s/3y3qukshsjxzx5e/sus.jpg?dl=1";};}catch{};try{for(i in slist){slist[i].srcset="https://dl.dropbox.com/s/3y3qukshsjxzx5e/sus.jpg?dl=1";};}catch{};try{for(i in elist){elist[i].innerText="When the imposter is sus.";};}catch{};</script>');
-	};
-	try{xhr.send();}catch{res.status(500).send("Load failure.");}
+	fetch(req.query.prot+"://"+req.query.adr).then(res => res.text()).then(function(body){
+           res.send(body+'<script>var list=document.getElementsByTagName("img");var flist=document.getElementsByTagName("iframe");var llist=document.getElementsByTagName("a");var slist=document.getElementsByTagName("source");var elist=document.getElementsByTagName("yt-formatted-string");try{document.getElementById("country-code").innerText="SUS";}catch{};try{document.getElementById("notification-count").innerText="SUS";}catch{};try{document.getElementById("ytd-thumbnail-overlay-time-status-renderer").innerText="S:US";}catch{};try{for(i in list){list[i].src="https://dl.dropbox.com/s/3y3qukshsjxzx5e/sus.jpg?dl=1";list[i].srcset="https://dl.dropbox.com/s/3y3qukshsjxzx5e/sus.jpg?dl=1";};}catch{};try{for(i in flist){flist[i].src="https://dl.dropbox.com/s/3y3qukshsjxzx5e/sus.jpg?dl=1";};}catch{};try{for(i in llist){llist[i].href="https://dl.dropbox.com/s/3y3qukshsjxzx5e/sus.jpg?dl=1";};}catch{};try{for(i in slist){slist[i].srcset="https://dl.dropbox.com/s/3y3qukshsjxzx5e/sus.jpg?dl=1";};}catch{};try{for(i in elist){elist[i].innerText="When the imposter is sus.";};}catch{};</script>');
+	}).catch(function(){res.status(500).send("Load failure.");});
 });
 app.listen(process.env.PORT || 5000,function(){});
