@@ -4,14 +4,15 @@
   <title>WebSite SUSifier</title>
 </head>
 <body>
-<input type="text" id="site" placeholder="Website URL without protocol">
-<input type="text" id="prot" placeholder="Protocol, example: http">
+<h1>Susify website!</h1>
+<input type="text" id="site" placeholder="Website URL without protocol"><br>
+<input type="text" id="prot" placeholder="Protocol, example: http"><br>
 <button onclick="go()">Go!</button>
 <script>
 function go(){
 var protocol = document.getElementById("prot").value;
 var site = document.getElementById("site").value;
-location.href="/susify?prot="+protocol+"&site="+site+"&policy=0";
+location.href="/susify?prot="+protocol+"&adr="+site+"&policy=0";
 }
 </script>
 </body>
